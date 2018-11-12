@@ -3,7 +3,7 @@ import Square from "./Square";
 
 class Board extends Component {
     drawSquare(i) {
-        return <Square />;
+        return <Square value={i} />;
     }
 
     render() {
@@ -12,11 +12,6 @@ class Board extends Component {
         return (
             <div>
                 <div className="status">{status}</div>
-                <div className="board-row">
-                    {this.drawSquare(0)}
-                    {this.drawSquare(1)}
-                    {this.drawSquare(2)}
-                </div>
                 <div className="board-row">
                     {this.drawSquare(0)}
                     {this.drawSquare(1)}
