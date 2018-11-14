@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import Square from "./Square";
 
 class Board extends Component {
-    drawSquare(i) {
-        return <Square value={i} />;
+    constructor(props) {
+        super(props);
+        this.state = {
+            squares: Array(9).fill(null)
+        }
     }
 
     render() {
@@ -29,6 +32,18 @@ class Board extends Component {
                 </div>
             </div>
         );
+    }
+
+    drawSquare(i) {
+        return <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />;
+    }
+
+    handleClick(i) {
+        // create the copy of the array
+        const copiedSquares = this.state.squares.slice();
+        copiedSquares[i] = 'X';
+        // trigger setState with the copied array
+        this.setState({ squares: copiedSquares });
     }
 }
 
